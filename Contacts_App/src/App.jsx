@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config/firebase";
 import ContactCard from './Components/ContactCard';
-import Modal from './Components/Modal';
+import AddAndUpdateContact from './Components/AddAndUpdateContact';
 
 function App() {
 
@@ -66,12 +66,7 @@ function App() {
         ))}
               </div>
       </div >
-      <Modal
-        isOpen={isOpen} 
-        onClose={onClose}
-      >
-        yelo
-      </Modal>
+      <AddAndUpdateContact onClose={onClose} isOpen={isOpen}/>
       </>
       )
       
