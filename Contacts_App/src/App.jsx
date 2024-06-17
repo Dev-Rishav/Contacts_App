@@ -37,14 +37,14 @@ function App() {
     <>
       <div className='max-w-[370px] mx-auto px-4'>
         <Navbar />
-        <div className='flex gap-2'>
+        <div className='flex '>
           <div className='relative flex items-center flex-grow'>
             <MdPersonSearch className='text-3xl text-white absolute ml-1'></MdPersonSearch>
             <input type="text" className='border text-white pl-9 bg-transparent border-white h-10 flex-grow rounded-md '></input>
           </div>
           <FaPlusCircle className='text-4xl ml-2 cursor-pointer text-white gap-2'></FaPlusCircle>
         </div>
-        <div className='mt-5' >
+        <div className='mt-5 gap-3 flex-col flex' >
           {
             contact.map((contact) => (
               <ContactCard key={contact.id} contact={contact}/>
