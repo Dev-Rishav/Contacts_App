@@ -6,10 +6,23 @@ import { useEffect, useState } from 'react';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config/firebase";
 import ContactCard from './Components/ContactCard';
+import Modal from './Components/Modal';
 
 function App() {
 
   const [contact, setContact] = useState([]); //Initialize an empty array
+
+  const [isOpen,setOpen]= useState(false);
+
+  const onOpen = () => {
+    setOpen(true);
+  };
+
+  
+
+  const onClose= () => {
+    setOpen(false);
+  }
 
   useEffect(() => {
     const getContacts = async () => {
@@ -42,7 +55,9 @@ function App() {
             <MdPersonSearch className='text-3xl text-white absolute ml-1'></MdPersonSearch>
             <input type="text" className='border text-white pl-9 bg-transparent border-white h-10 flex-grow rounded-md '></input>
           </div>
-          <FaPlusCircle className='text-4xl ml-2 cursor-pointer text-white gap-2'></FaPlusCircle>
+          <FaPlusCircle  
+          onClick={onOpen}
+          className='text-4xl ml-2 cursor-pointer text-white gap-2'></FaPlusCircle>
         </div>
         <div className='mt-5 gap-3 flex-col flex' >
           {
@@ -51,8 +66,15 @@ function App() {
         ))}
               </div>
       </div >
+      <Modal
+        isOpen={isOpen} 
+        onClose={onClose}
+      >
+        yelo
+      </Modal>
       </>
       )
+      
 }
 
       export default App
