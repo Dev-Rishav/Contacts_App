@@ -2,11 +2,10 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import { MdPersonSearch } from "react-icons/md";
 import { FaPlusCircle, FaUser } from "react-icons/fa";
-import { IoMdTrash } from "react-icons/io";
-import { RiEditCircleLine } from "react-icons/ri";
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config/firebase";
+import ContactCard from './Components/ContactCard';
 
 function App() {
 
@@ -47,21 +46,8 @@ function App() {
         </div>
         <div className='mt-5' >
           {
-            contact.map(contact => (
-              <div key={contact.id} className='p-2 rounded-lg  bg-yellow flex justify-around items-center' >
-                <div className='flex gap-2'>
-                  <FaUser className='text-orange text-3xl' />
-                  <div className=''>
-                    <h2 className='font-medium'>{contact.name}</h2>
-                    <h2 className='text-sm font-medium'>{contact.Email}</h2>
-                    <h2 className='text-sm font-medium'>{contact.Phone_No}</h2>
-                  </div>
-                  <div className='flex gap-1 text-xl'>
-                    <RiEditCircleLine></RiEditCircleLine>
-                    <IoMdTrash></IoMdTrash>
-                  </div>
-                </div>
-              </div>
+            contact.map((contact) => (
+              <ContactCard key={contact.id} contact={contact}/>
         ))}
               </div>
       </div >
