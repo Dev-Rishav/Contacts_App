@@ -12,7 +12,7 @@ const Modal = ({isOpen, onClose, children}) => {
                         <AiOutlineClose onClick = {onClose} className='cursor-pointer self-end text-2xl'></AiOutlineClose>
 
                     </div>
-            
+            {children}
             </div>
             <div onClick = {onClose} className=' absolute top-0 z-40 backdrop-blur h-screen w-screen'/>
             </>}
