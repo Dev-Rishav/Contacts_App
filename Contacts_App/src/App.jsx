@@ -2,8 +2,30 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import { MdPersonSearch } from "react-icons/md";
 import { FaPlusCircle } from "react-icons/fa";
+import { useEffect, useState } from 'react';
+import {collection, getDocs} from  "firebase/firestore";
+import {db} from "./config/firebase";
 
 function App() {
+
+  const [contact,setContact]= useState([]); //Initialize an empty array
+
+  useEffect( () => {
+    const getContacts = async () => {
+      try {
+        const contactRef = collection(db,"contacts");
+        const contactSnapshot = await getDocs(contactRef);
+        const contactList = contactSnapshot.docs.map((doc)=> doc.data());
+        console.log(contactList);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getContacts();
+
+  },[]);
+
 
   return (
     <>
